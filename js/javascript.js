@@ -16,20 +16,21 @@ function getComputerChoice() {
             computerChoice = 'scissors';
             break;
 
-    return computerChoice;
+    
     }
+    return computerChoice;
 }
 
-getComputerChoice();
+
 
 
 
 // create a function to get the players selection
 
-function getPlayerChoice() {
+function playerSelection() {
 
     //input 
-    let userInput = prompt("Rock Paper or scissors?", 'Rock');
+    let userInput = prompt("Rock Paper or scissors?", 'rock');
     userInput = userInput.toLowerCase();
 
     //return the player selection
@@ -37,11 +38,32 @@ function getPlayerChoice() {
     
 }
 
-getPlayerChoice();
+function game() {
+    for (let i = 0; i < 5; i++) {
+        console.log(playRound(playerSelection(), getComputerChoice()));
+    }
+}
 
-// create a function that plays a round of rock paper scissors with computer and player selections as inputs
 
+function playRound(playerChoice, computerChoice) {
     //if statements for the 6 cases
+    if (playerChoice == computerChoice) {
+        return 'It\'s a tie!';          
+    } else if (playerChoice == 'rock' && computerChoice == 'scissors') {
+        return 'Rock beats scissors, You Win!'
+    } else if (playerChoice == 'rock' && computerChoice == 'paper') {
+        return 'Paper beats rock, You lose!'
+    } else if (playerChoice == 'paper' && computerChoice == 'rock') {
+        return 'Paper beats rock, You win!'     
+    } else if (playerChoice == 'paper' && computerChoice == 'scissors') {
+        return 'Scissors beat paper, You lose!'
+    } else if (playerChoice == 'scissors' && computerChoice == 'paper') {
+        return 'Scissors beat paper, You win!'
+    } else if (playerChoice == 'scissors' && computerChoice == 'rock') {
+        return 'Rock beats scissors, You lose!'
+    }
+    
+}
 
 
-    // return the string for the loser/ winner case
+game();
