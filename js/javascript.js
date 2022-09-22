@@ -39,9 +39,11 @@ function playerSelection() {
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound(playerSelection(), getComputerChoice()));
-    }
+    // for (let i = 0; i < 5; i++) {
+    //     console.log(playRound(playerSelection(), getComputerChoice()));
+    // }
+
+    console.log(playRound(playerSelection(), getComputerChoice()));
 }
 
 
