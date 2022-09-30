@@ -27,23 +27,27 @@ function getComputerChoice() {
 
 // create a function to get the players selection
 
-function playerSelection() {
+// function playerSelection() {
 
-    //input 
-    let userInput = prompt("Rock Paper or scissors?", 'rock');
-    userInput = userInput.toLowerCase();
+//     //input 
+//     let userInput = prompt("Rock Paper or scissors?", 'rock');
+//     userInput = userInput.toLowerCase();
 
-    //return the player selection
-    return userInput;
+//     //return the player selection
+//     return userInput;
     
-}
+// }
 
-function game() {
+function game(playerSelection) {
     // for (let i = 0; i < 5; i++) {
     //     console.log(playRound(playerSelection(), getComputerChoice()));
     // }
 
-    console.log(playRound(playerSelection(), getComputerChoice()));
+    const results = document.querySelector('#results');
+    results.style.color = 'blue';
+    
+
+    results.textContent = playRound(playerSelection, getComputerChoice());
 }
 
 
@@ -68,18 +72,21 @@ function playRound(playerChoice, computerChoice) {
 }
 
 
-
-game();
-
-
 const rockButton = document.querySelector('#rock');
-rockButton.addEventListener('click', () => {
-    alert('You chose rock');
+rockButton.addEventListener('click', (e) => {
+    game('rock');
+    console.log(e);
 });
-rockButton.onclick = () => alert('You chose Rock');
+
 
 const paperButton = document.querySelector('#paper');
-paperButton.onclick = () => alert('You chose Paper');
+paperButton.addEventListener('click', (e) => {
+    game('paper');
+    console.log(e);
+})
 
 const scissorsButton = document.querySelector('#scissors');
-scissorsButton.onclick = () => alert('You chose Scissors');
+scissorsButton.addEventListener('click', (e) => {
+    game('scissors');
+    console.log(e);
+})
