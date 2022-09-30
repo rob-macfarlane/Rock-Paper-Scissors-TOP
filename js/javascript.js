@@ -58,43 +58,73 @@ function playRound(playerChoice, computerChoice) {
     
 }
 
+function printResults(userChoice) {
+    const resultContainer = document.querySelector('#results');
+    const rpsResult = document.createElement('div');
+
+    rpsResult.classList.add('singleResult');
+    rpsResult.textContent = game(userChoice);
+    resultContainer.appendChild(rpsResult);
+    
+}
+
+function updateScore() {
+    const score = document.querySelector('#score');
+    const yourScoreDiv = document.querySelector('#yourPoints');
+    const computerScoreDiv = document.querySelector('#computerPoints');
+
+    yourScoreDiv.textContent = 'Your score is:  ' + yourScore.toString();
+    computerScoreDiv.textContent = 'The computer\'s score is:   ' + computerScore.toString(); 
+
+}
+
+function removeResults (){
+    const results = document.getElementsByClassName('singleResult');
+    while(results.length > 0){
+        results[0].parentNode.removeChild(results[0]);
+    }
+}
+
+function evaluateScore() {
+    if (yourScore == 5) {
+        alert('You win\nYou scored ' + yourScore + ' points\nThe computer scored ' + computerScore + ' points' );
+        yourScore = 0;
+        computerScore = 0;
+        updateScore();
+        removeResults();
+    } else if (computerScore == 5) {
+        alert('You lose\nThe computer scored ' + computerScore + ' points\nYou scored ' + yourScore + ' points' );
+        yourScore = 0;
+        computerScore = 0;
+        updateScore();
+        removeResults();
+
+
+    }
+}
+
 
 const rockButton = document.querySelector('#rock');
 rockButton.addEventListener('click', (e) => {
-    const resultContainer = document.querySelector('#results');
-    const rpsResult = document.createElement('div');
-    const score = document.querySelector('#score');
-    rpsResult.classList.add('singleResult');
-    
-    rpsResult.textContent = game('rock');
-    score.textContent = 'Your score is:' + yourScore + ' The computer score is:' + computerScore;
-    resultContainer.appendChild(rpsResult);
+    printResults('rock');
+    updateScore();
+    evaluateScore();
     console.log(e);
 });
 
 
 const paperButton = document.querySelector('#paper');
 paperButton.addEventListener('click', (e) => {
-    const resultContainer = document.querySelector('#results');
-    const rpsResult = document.createElement('div');
-    const score = document.querySelector('#score');
-    rpsResult.classList.add('singleResult');
-    
-    rpsResult.textContent = game('paper');
-    score.textContent = 'Your score is:' + yourScore + ' The computer score is:' + computerScore;
-    resultContainer.appendChild(rpsResult);
+    printResults('paper');
+    updateScore();
+    evaluateScore();
     console.log(e);
 })
 
 const scissorsButton = document.querySelector('#scissors');
 scissorsButton.addEventListener('click', (e) => {
-    const resultContainer = document.querySelector('#results');
-    const rpsResult = document.createElement('div');
-    const score = document.querySelector('#score');
-    rpsResult.classList.add('singleResult');
-    
-    rpsResult.textContent = game('scissors');
-    score.textContent = 'Your score is:' + yourScore + ' The computer score is:' + computerScore;
-    resultContainer.appendChild(rpsResult);
+    printResults('scissors');
+    updateScore();
+    evaluateScore();
     console.log(e);
 })

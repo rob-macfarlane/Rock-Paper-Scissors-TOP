@@ -1,0 +1,18 @@
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.rpsButton {
+    margin: 10px;
+}
+
+#resultsContainer {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.printToScreen {
+    margin: 10px;
+}
